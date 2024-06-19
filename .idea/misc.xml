@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="big-data-search" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="big-data-search" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="big-data-search-engine" project-jdk-type="Python SDK" />
 </project>
