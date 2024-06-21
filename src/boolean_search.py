@@ -22,7 +22,7 @@ def search_boolean_spark(file_path, keyword):
 
 
 def main():
-    file_path = "/home/dungca/Desktop/big-data-search/resources/index/index.txt"
+    file_path = "/home/dungca/Desktop/big-data-search-engine/resources/index/index.txt"
     while True:
         keyword = input("Nhập từ khóa tìm kiếm (hoặc 'q' để thoát): ")
         if keyword.lower() == 'q':

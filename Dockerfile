@@ -1,4 +1,10 @@
-FROM ubuntu:latest
-LABEL authors="dungca"
+FROM python:3.9
 
-ENTRYPOINT ["top", "-b"]
+RUN mkdir /app
+
+COPY . /app/
+
+WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
+
+WORKDIR /app/src
