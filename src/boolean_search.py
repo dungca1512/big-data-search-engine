@@ -6,13 +6,13 @@ def search_boolean_spark(file_path, keyword):
     spark = SparkSession.builder.appName("BooleanSearchSpark").getOrCreate()
 
     try:
-        # Đọc dữ liệu từ file và chuyển đổi thành RDD
+        # Read data from file and convert to RDD
         data_rdd = spark.sparkContext.textFile(file_path)
-        # Phân tách mỗi dòng thành cặp (khóa, danh sách giá trị)
+        # Split line into (key, value)
         keyword_urls_rdd = data_rdd.map(lambda line: line.split('\t'))
-        # Nhóm các giá trị theo khóa
+        # Group values by key
         keyword_grouped_urls = keyword_urls_rdd.groupByKey()
-        # Lọc danh sách các URL cho từ khóa cần tìm kiếm
+        # Filter the list of URLs for keywords to search for
         url_list = keyword_grouped_urls.filter(lambda x: x[0] == keyword).flatMap(lambda x: x[1]).collect()
     except FileNotFoundError as e:
         print("Error: File not found:", e)
@@ -24,17 +24,17 @@ def search_boolean_spark(file_path, keyword):
 def main():
     file_path = "/home/dungca/Desktop/big-data-search-engine/resources/index/index.txt"
     while True:
-        keyword = input("Nhập từ khóa tìm kiếm (hoặc 'q' để thoát): ")
+        keyword = input("Enter search keyword (or 'q' to exit): ")
         if keyword.lower() == 'q':
             break
         results = search_boolean_spark(file_path, keyword)
         if results:
-            print(f"Danh sách URL chứa từ khóa '{keyword}':")
+            print(f"List of URLs containing keyword '{keyword}':")
             for url in results[0].split(' '):
                 print(article_title.get_page_title(url) + "\n")
                 print(url + "\n")
         else:
-            print(f"Không tìm thấy URL nào chứa từ khóa '{keyword}'.")
+            print(f"No URLs containing the keyword {keyword} were found''.")
 
 
 if __name__ == "__main__":

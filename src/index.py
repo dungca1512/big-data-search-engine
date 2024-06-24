@@ -21,7 +21,7 @@ def create_index(documents):
 
 if __name__ == '__main__':
     # Đọc dữ liệu từ file JSON
-    with open('../resources/data/data.json', 'r') as file:
+    with open('/home/dungca/Desktop/Information_Retrieval/json/data.json', 'r', encoding="utf-8") as file:
         documents = json.load(file)
     create_index(documents)
 
