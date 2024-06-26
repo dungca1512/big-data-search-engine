@@ -34,7 +34,7 @@ def main():
                 print(article_title.get_page_title(url) + "\n")
                 print(url + "\n")
         else:
-            print(f"No URLs containing the keyword {keyword} were found''.")
+            print(f"No URLs containing the keyword {keyword} were found.")
 
 
 if __name__ == "__main__":
